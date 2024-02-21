@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Weather App</string>
+
+    <string name="enter_a_city_name">Enter a city name</string>
+    <string name="enter_a_country_code">Enter a country code (optional)</string>
+    <string name="get">Get</string>
+    <string name="weather">Weather</string>
+    <string name="show_history">Show History</string>
+    <string name="clear_history">Clear History</string>
+    <string name="go_back">Go Back</string>
+    <string name="history_will_be_displayed_here">History will be displayed here</string>
+</resources>
