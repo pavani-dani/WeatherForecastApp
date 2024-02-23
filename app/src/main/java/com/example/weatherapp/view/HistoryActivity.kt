@@ -2,6 +2,7 @@ package com.example.weatherapp.view
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +25,12 @@ class HistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
+
+        val clearButton: Button = findViewById(R.id.buttonClearHistory)
+        clearButton.setOnClickListener {
+            cityWeatherViewModel.clearHistory()
+            Toast.makeText(this, "History cleared.", Toast.LENGTH_SHORT).show()
+        }
 
         val cityWeatherDao = AppDatabase.getDatabase(application).cityWeatherDao()
         val cityWeatherRepository = CityWeatherRepository(cityWeatherDao)

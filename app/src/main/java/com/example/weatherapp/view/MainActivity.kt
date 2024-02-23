@@ -25,7 +25,6 @@ import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
     private lateinit var cityInput: EditText
-    //private lateinit var countryInput: EditText
     private lateinit var result: TextView
     private lateinit var cityWeatherViewModel: CityWeatherViewModel
     private val url = "https://api.openweathermap.org/data/2.5/weather?q="
@@ -36,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         cityInput = findViewById(R.id.cityInput)
-        //countryInput = findViewById(R.id.countryInput)
         result = findViewById(R.id.result)
 
         val cityWeatherRepository = CityWeatherRepository(AppDatabase.getDatabase(application).cityWeatherDao())
@@ -45,41 +43,27 @@ class MainActivity : AppCompatActivity() {
             CityWeatherViewModelFactory(cityWeatherRepository)
         ).get(CityWeatherViewModel::class.java)
 
-        // Botão Get
+        // Get
         findViewById<Button>(R.id.buttonGet).setOnClickListener {
             getWeather(it)
         }
 
-        // Botão Show History
+        // Show History
         findViewById<Button>(R.id.buttonShowHistory).setOnClickListener {
             val intent = Intent(this, HistoryActivity::class.java)
             startActivity(intent)
-        }
-
-        /*Botão Clear History
-        findViewById<Button>(R.id.buttonClearHistory).setOnClickListener {
-            clearHistory()
-        }*/
-        val clearButton: Button = findViewById(R.id.buttonClearHistory)
-        clearButton.setOnClickListener {
-            cityWeatherViewModel.clearHistory()
-            Toast.makeText(this, "History cleared.", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun getWeather(view: View) {
         var tempUrl = ""
         val city = cityInput.text.toString().trim()
-        //val country = countryInput.text.toString().trim()
 
         if (city.isEmpty()) {
             result.text = "City field cannot be empty."
         } else {
-            tempUrl = /*if (country.isNotEmpty()) {
-                "$url$city,$country&appid=$appid"
-            } else {
-                */"$url$city&appid=$appid"
-            }
+                tempUrl = "$url$city&appid=$appid"
+        }
 
             val stringRequest = StringRequest(
                 Request.Method.POST,
@@ -103,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                         val jsonObjectSys = jsonResponse.getJSONObject("sys")
                         val countryName = jsonObjectSys.getString("country")
                         val cityName = jsonResponse.getString("name")
-                        //result.setTextColor(Color.rgb(68, 134, 199))
+                        result.setTextColor(Color.rgb(0, 0, 0))
                         output = """Current weather of $cityName ($countryName)
  Temp: ${df.format(temp)} °C
  Feels Like: ${df.format(feelsLike)} °C
@@ -126,23 +110,3 @@ class MainActivity : AppCompatActivity() {
             Volley.newRequestQueue(this).add(stringRequest)
         }
     }
-
-    /*private fun showHistory() {
-        cityWeatherViewModel.getAllCityWeather().observe(this, { cities ->
-            if (cities.isNotEmpty()) {
-                val historyStringBuilder = StringBuilder()
-                for (city in cities) {
-                    historyStringBuilder.append("${city.cityName}: ${city.weatherDescription}\n")
-                }
-                result.text = historyStringBuilder.toString()
-            } else {
-                result.text = "No history available."
-            }
-        })
-    }*/
-
-    /*private fun clearHistory() {
-        cityWeatherViewModel.clearHistory()
-        result.text = "History cleared."
-    }
-}*/
