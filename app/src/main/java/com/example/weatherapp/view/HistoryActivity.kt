@@ -8,7 +8,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.InvalidationTracker
 import com.example.weatherapp.R
 import com.example.weatherapp.model.AppDatabase
 import com.example.weatherapp.model.CityWeatherRepository
@@ -53,10 +52,5 @@ class HistoryActivity : AppCompatActivity() {
                 adapter.setCities(cityInfoList)
             }
         })
-
-        /*val backButton: Button = findViewById(R.id.buttonGoBack)
-        backButton.setOnClickListener {
-            finish()
-        }*/
     }
 }
