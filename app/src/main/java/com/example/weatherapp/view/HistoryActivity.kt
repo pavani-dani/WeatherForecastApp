@@ -43,7 +43,7 @@ class HistoryActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        cityWeatherViewModel.getAllCityWeather().observe(this, Observer { cities ->
+        cityWeatherViewModel.getAllCityWeather().observe(this) { cities ->
             cities?.let {
                 val sortedCities = it.sortedByDescending { city -> city.id }
                 val cityInfoList = sortedCities.map { city ->
@@ -51,6 +51,6 @@ class HistoryActivity : AppCompatActivity() {
                 }
                 adapter.setCities(cityInfoList)
             }
-        })
+        }
     }
 }

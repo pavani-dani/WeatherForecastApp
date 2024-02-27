@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.R
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cityInput: EditText
     private lateinit var result: TextView
     private lateinit var cityWeatherViewModel: CityWeatherViewModel
+    private var emptyMessage = "City field cannot be empty."
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         cityWeatherViewModel = ViewModelProvider(
             this,
             CityWeatherViewModelFactory(cityWeatherRepository)
-        ).get(CityWeatherViewModel::class.java)
+        )[CityWeatherViewModel::class.java]
 
         // Get
         findViewById<Button>(R.id.buttonGet).setOnClickListener {
@@ -49,13 +49,13 @@ class MainActivity : AppCompatActivity() {
         val city = cityInput.text.toString().trim()
 
         if (city.isEmpty()) {
-            result.text = "City field cannot be empty."
+            result.text = emptyMessage
         } else {
             val serviceApi = ServiceApi(this)
             serviceApi.getWeather(city) { response ->
                 runOnUiThread {
                     result.setTextColor(Color.rgb(0, 0, 0))
-                    result.text = response.toString()
+                    result.text = response
                 }
             }
         }
