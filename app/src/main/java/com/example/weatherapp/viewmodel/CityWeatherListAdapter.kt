@@ -18,7 +18,7 @@ class CityWeatherListAdapter : RecyclerView.Adapter<CityWeatherListAdapter.CityW
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityWeatherViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_city_weather, parent, false)
         return CityWeatherViewHolder(view)
     }
 
@@ -30,9 +30,17 @@ class CityWeatherListAdapter : RecyclerView.Adapter<CityWeatherListAdapter.CityW
         return cityNames.size
     }
 
-    class CityWeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    /*class CityWeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(cityName: String) {
-            itemView.findViewById<TextView>(android.R.id.text1).text = cityName
+            itemView.findViewById<TextView>(R.id.item_text).text = cityName
+        }
+    }*/
+
+    class CityWeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val textViewCityWeather: TextView = itemView.findViewById(R.id.item_text)
+
+        fun bind(cityWeather: String) {
+            textViewCityWeather.text = cityWeather
         }
     }
 }

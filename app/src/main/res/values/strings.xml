@@ -9,4 +9,6 @@
     <string name="clear_history">Clear History</string>
     <string name="go_back">Go Back</string>
     <string name="history_will_be_displayed_here">History will be displayed here</string>
+    <string name="icon_desc">weather icon</string>
+    <string name="item_text">Item text</string>
 </resources>
