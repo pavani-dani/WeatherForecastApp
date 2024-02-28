@@ -11,6 +11,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class ServiceApi(private val context: Context) {
 
@@ -29,6 +32,14 @@ class ServiceApi(private val context: Context) {
         call.enqueue(object : Callback<WeatherResponse> {
             override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
                 response.body()?.let {
+                    // get the current date and time
+                    val currentDateTime = Calendar.getInstance().time
+                    val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+                    val formattedDateTime = dateTimeFormat.format(currentDateTime)
+
+                    // set the API call date and time in the response
+                    it.apiCallDateTime = formattedDateTime
+
                     val temp = it.main.temp - 273.15
                     val feelsLike = it.main.feels_like - 273.15
                     val output = """Current weather of ${it.name} (${it.sys.country})
@@ -43,7 +54,7 @@ class ServiceApi(private val context: Context) {
 
                     val cityWeatherRepository = CityWeatherRepository(AppDatabase.getDatabase(context).cityWeatherDao())
                     val cityWeatherViewModel = CityWeatherViewModelFactory(cityWeatherRepository).create(CityWeatherViewModel::class.java)
-                    cityWeatherViewModel.insert(CityWeather(cityName = it.name, temperature = temp, weatherDescription = it.weather[0].description))
+                    cityWeatherViewModel.insert(CityWeather(cityName = it.name, temperature = temp, weatherDescription = it.weather[0].description, apiCallDateTime = formattedDateTime))
                 }
             }
 

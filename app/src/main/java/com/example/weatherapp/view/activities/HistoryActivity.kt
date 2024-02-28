@@ -1,5 +1,6 @@
 package com.example.weatherapp.view.activities
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -46,7 +47,7 @@ class HistoryActivity : AppCompatActivity() {
             cities?.let {
                 val sortedCities = it.sortedByDescending { city -> city.id }
                 val cityInfoList = sortedCities.map { city ->
-                    "${city.cityName}: ${df.format(city.temperature)}°C ${city.weatherDescription}"
+                    "${city.cityName}: ${df.format(city.temperature)}°C  ${city.weatherDescription} \n${city.apiCallDateTime}"
                 }
                 adapter.setCities(cityInfoList)
             }

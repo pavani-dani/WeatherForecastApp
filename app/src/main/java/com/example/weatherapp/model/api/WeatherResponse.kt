@@ -6,5 +6,6 @@ data class WeatherResponse(
     val wind: Wind,
     val clouds: Clouds,
     val sys: Sys,
-    val name: String
+    val name: String,
+    var apiCallDateTime: String? = null
 )

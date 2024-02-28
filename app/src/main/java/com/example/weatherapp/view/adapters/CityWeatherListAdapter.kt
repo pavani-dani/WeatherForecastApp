@@ -1,5 +1,6 @@
 package com.example.weatherapp.view.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ class CityWeatherListAdapter : RecyclerView.Adapter<CityWeatherListAdapter.CityW
 
     private var cityNames: List<String> = listOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setCities(cities: List<String>) {
         cityNames = cities
         notifyDataSetChanged()
@@ -28,12 +30,6 @@ class CityWeatherListAdapter : RecyclerView.Adapter<CityWeatherListAdapter.CityW
     override fun getItemCount(): Int {
         return cityNames.size
     }
-
-    /*class CityWeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(cityName: String) {
-            itemView.findViewById<TextView>(R.id.item_text).text = cityName
-        }
-    }*/
 
     class CityWeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textViewCityWeather: TextView = itemView.findViewById(R.id.item_text)
