@@ -3,8 +3,8 @@ package com.example.weatherapp.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.weatherapp.model.CityWeather
-import com.example.weatherapp.model.CityWeatherRepository
+import com.example.weatherapp.model.data.CityWeather
+import com.example.weatherapp.model.repository.CityWeatherRepository
 import kotlinx.coroutines.launch
 
 class CityWeatherViewModel(private val repository: CityWeatherRepository) : ViewModel() {

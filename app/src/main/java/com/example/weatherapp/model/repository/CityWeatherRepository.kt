@@ -1,6 +1,7 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.model.repository
 
 import androidx.lifecycle.LiveData
+import com.example.weatherapp.model.data.CityWeather
 
 class CityWeatherRepository(private val cityWeatherDao: CityWeatherDao) {
 

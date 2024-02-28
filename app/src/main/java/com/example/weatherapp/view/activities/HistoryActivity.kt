@@ -1,4 +1,4 @@
-package com.example.weatherapp.view
+package com.example.weatherapp.view.activities
 
 import android.os.Bundle
 import android.widget.Button
@@ -8,9 +8,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
-import com.example.weatherapp.model.AppDatabase
-import com.example.weatherapp.model.CityWeatherRepository
-import com.example.weatherapp.viewmodel.CityWeatherListAdapter
+import com.example.weatherapp.model.data.AppDatabase
+import com.example.weatherapp.model.repository.CityWeatherRepository
+import com.example.weatherapp.view.adapters.CityWeatherListAdapter
 import com.example.weatherapp.viewmodel.CityWeatherViewModel
 import com.example.weatherapp.viewmodel.CityWeatherViewModelFactory
 import java.text.DecimalFormat

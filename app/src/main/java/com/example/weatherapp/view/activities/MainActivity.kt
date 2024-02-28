@@ -1,4 +1,4 @@
-package com.example.weatherapp.view
+package com.example.weatherapp.view.activities
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.R
-import com.example.weatherapp.api.ServiceApi
-import com.example.weatherapp.model.AppDatabase
-import com.example.weatherapp.model.CityWeatherRepository
+import com.example.weatherapp.model.api.ServiceApi
+import com.example.weatherapp.model.data.AppDatabase
+import com.example.weatherapp.model.repository.CityWeatherRepository
 import com.example.weatherapp.viewmodel.CityWeatherViewModel
 import com.example.weatherapp.viewmodel.CityWeatherViewModelFactory
 

@@ -1,9 +1,9 @@
-package com.example.weatherapp.api
+package com.example.weatherapp.model.api
 
 import android.content.Context
-import com.example.weatherapp.model.AppDatabase
-import com.example.weatherapp.model.CityWeather
-import com.example.weatherapp.model.CityWeatherRepository
+import com.example.weatherapp.model.data.AppDatabase
+import com.example.weatherapp.model.data.CityWeather
+import com.example.weatherapp.model.repository.CityWeatherRepository
 import com.example.weatherapp.viewmodel.CityWeatherViewModel
 import com.example.weatherapp.viewmodel.CityWeatherViewModelFactory
 import retrofit2.Call

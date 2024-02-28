@@ -19,7 +19,7 @@
         android:name=".view.MyApplication"
         tools:targetApi="31">
 
-    <activity android:name=".view.MainActivity"
+    <activity android:name=".view.activities.MainActivity"
         android:exported="true"
         tools:ignore="WrongManifestParent"
         android:screenOrientation="fullSensor">
@@ -29,8 +29,8 @@
         </intent-filter>
     </activity>
 
-        <activity android:name=".view.HistoryActivity"
-            android:parentActivityName=".view.MainActivity"/>
+        <activity android:name=".view.activities.HistoryActivity"
+            android:parentActivityName=".view.activities.MainActivity"/>
 
     </application>
     </manifest>

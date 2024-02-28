@@ -1,11 +1,11 @@
-package com.example.weatherapp.model
+package com.example.weatherapp.model.repository
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.weatherapp.model.CityWeather
+import com.example.weatherapp.model.data.CityWeather
 
 @Dao
 interface CityWeatherDao {
